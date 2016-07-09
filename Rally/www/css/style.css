@@ -9,6 +9,7 @@ color: red;
 
 }
 
+/*Page n°1 Start */
 .wrapper {
   background-image: url('../img/nature.jpg');
   height: 200px;
@@ -53,7 +54,4 @@ color: red;
   margin-bottom: 2em;
 }
 
-
-.article {
-	margin-top: 120px;
-}
+/* Page 1 End */
