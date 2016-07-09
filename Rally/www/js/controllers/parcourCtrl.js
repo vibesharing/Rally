@@ -1,5 +1,7 @@
 function parcourCtrl($rootScope, $scope,$state, $stateParams, parcourService){
 
+console.log($stateParams.filter);
+
 $scope.parcour = {name:'', duration:'',category:'',theme:'',distance:''};
 $scope.POI = {description:'',timetable:'',name:'',location:{lng:'',lat:''}};
 $scope.POIS = [];
@@ -18,6 +20,10 @@ $scope.addParcour = function(){
   parcourService.createParcour($scope.parcour).then(function(res){
     $scope.parcour = {name:'', duration:'',category:'',theme:'',distance:''};
   });
+
+};
+$scope.gotopagesoustheme= function(filter){
+  $state.go('descrption', {id: filter});
 
 };
 $scope.goToDescription = function(){

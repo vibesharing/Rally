@@ -1,0 +1,42 @@
+<ion-view hide-nav-bar='true'>
+
+  <ion-content>
+    <div ng-show="filter == 'patrimoine'">
+
+      <div class="wrapper wrap" style="  background-color: rgba(255, 0, 200, 0.4);">
+        <img src="http://192.169.0.19:8000/img/nature.jpg" class="imgCover1" alt=""/>
+        <h1>Sites Historiques</h1>
+        <i class="icon ion-leaf"></i>
+      </div>
+      <div class="wrapper1 wrap" style="  background-color: rgba(255, 0, 200, 0.4);">
+        <img src="http://192.169.0.19:8000/img/gourmand.jpg" class="imgCover2" alt=""/>
+        <h1>Sites Industriels</h1>
+        <i class="icon ion-leaf"></i>
+
+      </div>
+      <div class="wrapper2 wrap" style=" background-color: rgba(255, 0, 200, 0.4);">
+        <img src="http://192.169.0.19:8000/img/Patrimoine.jpg" class="imgCover3" alt=""/>
+        <a ng-click="goToPageList('architecture')"><h1>Architecture</h1>
+
+        <i class="icon ion-leaf"></i></a>
+      </div>
+    </div>
+    <div ng-show="filter == 'nature'">
+
+      <div class="wrapper wrap" style="  background-color: rgba(255, 0, 0, 0.4);">
+        <img src="http://192.169.0.19:8000/img/nature.jpg" class="imgCover1" alt=""/>
+        <h1>Nature</h1>
+        <i class="icon ion-leaf"></i>
+      </div>
+    </div>
+
+    <div ng-show="filter == 'gourmand'">
+      <div class="wrapper1 wrap" style="  background-color: rgba(25, 40, 0, 0.4);">
+        <img src="http://192.169.0.19:8000/img/gourmand.jpg" class="imgCover2" alt=""/>
+        <h1>Sites Industriels</h1>
+        <i class="icon ion-leaf"></i>
+      </div>
+    </div>
+
+    </ion-content>
+  </ion-view>

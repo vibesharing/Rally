@@ -6,7 +6,9 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic','ngCordova', 'starter.controllers', 'starter.services'])
-
+.config(function($ionicConfigProvider) {
+    $ionicConfigProvider.tabs.position('bottom');
+})
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -45,7 +47,25 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers', 'starter.
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+        controller: 'dashCtrl'
+      }
+    }
+  })
+  .state('tab.sous-theme', {
+    url: '/sous-theme/:filter',
+    views: {
+      'tab-sous-theme': {
+        templateUrl: 'templates/tab-sous-theme.html',
+        controller: 'sousthemeCtrl'
+      }
+    }
+  })
+  .state('tab.list', {
+    url: '/list/:filter',
+    views: {
+      'tab-list': {
+        templateUrl: 'templates/tab-list.html',
+        controller: 'listParcourCtrl'
       }
     }
   })

@@ -1,0 +1,33 @@
+<ion-view hide-nav-bar='true'>
+
+  <ion-content>
+
+    <div class="list card" ng-repeat='parcour in parcours'>
+
+      <div class="item item-avatar">
+        <img ng-src="http://192.169.0.19:8000/img/{{parcour.author.photo}}">
+        <h2>Auteur: {{parcour.author.name}}</h2>
+        <p>Posté le: {{parcour.postingDate}}</p>
+      </div>
+
+      <div class="item item-body">
+        <img class="full-image" ng-src="http://192.169.0.19:8000/img/{{parcour.photo}}">
+        <h1>{{parcour.name}}</h1>
+        <p>
+          {{parcour.description}}
+        </p>
+        <p>
+          <a href="#" class="subdued">{{parcour.likes}}</a>
+          <a href="#" class="subdued">{{parcour.comments.length}}</a>
+        </p>
+        <ion-item ng-repeat="category in parcour.category track by $index" class="inlineBlock">
+          {{category}}
+
+          <button class="button button-small button-assertive inlineBlockButton" ng-click="removeParticipant($index)">
+            <span style='font-size: 12px;'>X</span>
+          </button>
+      </div>
+      <button type="button" name="button" ng-click="goToMap(parcour)"> Suivre le Parcour</button>
+    </div>
+    </ion-content>
+  </ion-view>
