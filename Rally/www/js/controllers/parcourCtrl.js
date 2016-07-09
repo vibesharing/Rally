@@ -1,4 +1,4 @@
-function parcourCtrl($rootScope, $scope,$state, $stateParams, Chats, parcourService){
+function parcourCtrl($rootScope, $scope,$state, $stateParams, parcourService){
 
 $scope.parcour = {name:'', duration:'',category:'',theme:'',distance:''};
 $scope.POI = {description:'',timetable:'',name:'',location:{lng:'',lat:''}};
@@ -24,6 +24,5 @@ $scope.goToDescription = function(){
   $rootScope.parcour = $scope.parcour;
   $state.go('descrption');
 };
-
 
 }

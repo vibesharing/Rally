@@ -2,5 +2,5 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('ParcourCtrl', parcourCtrl)
+.controller('parcourCtrl', parcourCtrl)
 .controller ('mapCtrl', mapCtrl);
