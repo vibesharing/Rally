@@ -5,8 +5,11 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
+
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/hadstyle.css" rel="stylesheet">
+
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -14,18 +17,26 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="cordova.js"></script>
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-
+    <!-- controllers -->
     <script src="js/controllers/mapCtrl.js"></script>
     <script src="js/controllers/parcourCtrl.js"></script>
     <script src="js/controllers.js"></script>
+
+    <!-- Service -->
     <script src="js/services.js"></script>
+
+    <!-- google map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQUsAs_aBPoJ0ogbE2BQm6VgR7-HOVcZ8"></script>
+
   </head>
   <body ng-app="starter">
     <!--
