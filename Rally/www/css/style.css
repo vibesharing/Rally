@@ -1,1 +1,57 @@
 /* Empty. Add your own CSS if you like */
+.hola{
+color: red;
+}
+
+.background {
+	width:100%;
+	height:200px;
+
+}
+
+/*Page n°1 Start */
+.wrapper {
+  background-image: url('../img/nature.jpg');
+  height: 200px;
+  background-size: cover;
+  padding-top: 150px;
+  text-align: center;
+  color: white;
+}
+
+.wrapper1{
+	  background-image: url('../img/couv2.jpg');
+  height:200px;
+  background-size: cover;
+  padding-top: 150px;
+  text-align: center;
+  color: white;
+}
+.wrapper2{
+	  background-image: url('../img/couv2.jpg');
+  height:200px;
+  background-size: cover;
+  padding-top: 150px;
+  text-align: center;
+  color: white;
+}
+.wrapper3{
+	  background-image: url('../img/couv2.jpg');
+  height:200px;
+  background-size: cover;
+  padding-top: 150px;
+  text-align: center;
+  color: white;
+}
+
+.lead h2 {
+  background: rgba(0, 0, 0, .4);
+  display: inline-block;
+  padding: 0.2em;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-bottom: 2em;
+}
+
+/* Page 1 End */
