@@ -15,8 +15,7 @@ $scope.deletePOI = function(index){
 };
 
 
-$scope.addParcour = function(){
-  $scope.parcour.POIS = $scope.POIS;
+$scope.create = function(){
   parcourService.createParcour($scope.parcour).then(function(res){
     $scope.parcour = {name:'', duration:'',category:'',theme:'',distance:''};
   });
