@@ -20,3 +20,7 @@
   width: 80px;
   height: 80px;
 }
+.ion-record{
+  display: none;
+  height: 10px;
+}

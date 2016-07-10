@@ -1,22 +1,30 @@
 <ion-view hide-nav-bar='true'>
-    <ion-content>
+  <ion-content>
 
+    <div iclass="padding" id="map" data-tap-disabled="true"></div>
+    <div class="row">
+      <div class="col"><img src="{{url1}}">{{temp1}}°C</div>
+      <div class="col"><img src="{{url2}}">{{temp2}}°C</div>
+      <div class="col"><img src="{{url3}}">{{temp3}}°C</div>
+      <div class="col"><img src="{{url4}}">{{temp4}}°C</div>
 
-        <div iclass="padding" id="map" data-tap-disabled="true"></div>
-        <ion-slide-box>
-         <ion-slide ng-repeat="POI in parcour.POIS">
-           <div class="box blue">
+    </div>
 
-               <h1>{{POI.name}}</h1>
-               <h3>{{POI.description}}</h3>
+    <ion-slide-box>
+      <ion-slide ng-repeat="POI in parcour.POIS">
 
+        <div class="list">
 
-               <img style="width: 100px; height: 100px"src="http://192.169.0.19:8000/img/parcours/parcour1/{{POI.img}}" alt=""/>
+          <a class="item item-thumbnail-left" href="#">
+            <img style="width: 200px; height: 200px" src="http://192.169.0.19:8000/img/parcours/parcour1/{{POI.img}}" alt=""/>
+            <h2>{{POI.name}}</h2>
+            <h3>{{POI.description}}</h3>
+          </a>
+          {{weather.list[0].main}}
+        </div>
 
-             <!-- <button ng-click="nextSlide()">Next slide!</button> -->
-           </div>
-         </ion-slide>
+      </ion-slide>
 
-       </ion-slide-box>
-    </ion-content>
+    </ion-slide-box>
+  </ion-content>
 </ion-view>

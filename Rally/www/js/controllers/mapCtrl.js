@@ -1,10 +1,24 @@
 function mapCtrl($scope,$rootScope, $state ,$stateParams, $http, $cordovaGeolocation, $ionicSlideBoxDelegate) {
-
-
+$scope.parcour= $rootScope.parcour;
+  var url = "http://api.openweathermap.org/data/2.5/forecast/dayli?q="+$scope.parcour.name+"&APPID=5622f3462507a2a4de645900f99e6ec9&units=metric";
+  $http.get(url).then(function(res){
+    $scope.weather = res;
+    console.log(res.data);
+    console.log(res.data.list[0].weather[0].icon);
+    $scope.url1= 'http://openweathermap.org/img/w/'+res.data.list[0].weather[0].icon+'.png';
+    $scope.url2= 'http://openweathermap.org/img/w/'+res.data.list[1].weather[0].icon+'.png';
+    $scope.url3= 'http://openweathermap.org/img/w/'+res.data.list[2].weather[0].icon+'.png';
+    $scope.url4= 'http://openweathermap.org/img/w/'+res.data.list[3].weather[0].icon+'.png';
+    $scope.temp1= res.data.list[0].main.temp;
+    $scope.temp2= res.data.list[1].main.temp;
+    $scope.temp3= res.data.list[2].main.temp;
+    $scope.temp4= res.data.list[3].main.temp;
+    console.log($scope.temp4);
+  });
   $scope.nextSlide = function() {
      $ionicSlideBoxDelegate.next();
    };
-$scope.parcour= $rootScope.parcour;
+
 
   var options = {
     timeout: 10000,

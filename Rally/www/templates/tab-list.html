@@ -11,16 +11,19 @@
       </div>
 
       <div class="item item-body">
+
         <img class="full-image" ng-src="http://192.169.0.19:8000/img/{{parcour.photo}}">
-        <h1>{{parcour.name}}</h1>
+        <h3>{{parcour.name}}</h3>
         <p>
           {{parcour.description}}
         </p>
         <p>
+          durée: {{parcour.duration}} mins |
+          distance:  {{parcour.distance}} kms
+
           <a href="#" class="subdued">{{parcour.likes}}</a>
           <a href="#" class="subdued">{{parcour.comments.length}}</a>
         </p>
-
 
         <span class="inlineBlock" ng-repeat="category in parcour.category track by $index" >          {{category}}
 </span>
