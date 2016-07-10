@@ -7,3 +7,16 @@
     width: 100%;
     height: 50%;
 }
+.inlineBlock{
+  display: inline-block;
+  background-color: grey;
+  border-radius: 100px;
+  line-height: 30px;
+  padding:0px 9px 0px 9px;
+  margin-right: 2px;
+
+}
+.iconFront{
+  width: 80px;
+  height: 80px;
+}
