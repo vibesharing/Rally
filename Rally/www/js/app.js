@@ -51,6 +51,15 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers', 'starter.
       }
     }
   })
+  .state('tab.account', {
+    url: '/account',
+    views: {
+      'tab-account': {
+        templateUrl: 'templates/tab-account.html',
+        controller: 'dashCtrl'
+      }
+    }
+  })
   .state('tab.sous-theme', {
     url: '/sous-theme/:filter',
     views: {
