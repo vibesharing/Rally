@@ -11,16 +11,21 @@
     </div>
 
     <ion-slide-box>
-      <ion-slide ng-repeat="POI in parcour.POIS">
+      <ion-slide ng-repeat="POI in parcour.POIS track by $index">
 
         <div class="list">
 
-          <a class="item item-thumbnail-left" href="#">
+          <ion-item class="item item-thumbnail-left " style="white-space: normal">
             <img style="width: 200px; height: 200px" src="http://192.169.0.19:8000/img/parcours/parcour1/{{POI.img}}" alt=""/>
             <h2>{{POI.name}}</h2>
-            <h3>{{POI.description}}</h3>
-          </a>
-          {{weather.list[0].main}}
+            <p style="white-space: normal">{{POI.description}}</p>
+
+          </ion-item>
+          <p>
+          </p>
+          <button type="button" name="button" ng-click="play(POI.audioName)">play</button>
+          <button type="button" name="button" ng-click="pause()">pause</button>
+
         </div>
 
       </ion-slide>

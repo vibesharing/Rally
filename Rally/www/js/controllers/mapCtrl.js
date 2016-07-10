@@ -1,4 +1,33 @@
-function mapCtrl($scope,$rootScope, $state ,$stateParams, $http, $cordovaGeolocation, $ionicSlideBoxDelegate) {
+function mapCtrl($scope,$rootScope, $state ,$stateParams, $http, $cordovaGeolocation, $ionicSlideBoxDelegate, $cordovaMedia) {
+
+
+
+//Audio file:
+
+$scope.play = function(src){
+  console.log(src);
+  var src2 = 'http://192.169.0.19:8000/audio/'+src+'.mp3';
+  var media = $cordovaMedia.newMedia(src2);
+  media.play();
+};
+$scope.pause = function(){
+  media.stop();
+};
+
+  //  $cordovaMedia.newMedia('http://192.169.0.19:8000/audio/audio1.mp3').play();
+
+
+
+
+
+
+
+
+
+
+
+
+//METEO
 $scope.parcour= $rootScope.parcour;
   var url = "http://api.openweathermap.org/data/2.5/forecast/dayli?q="+$scope.parcour.name+"&APPID=5622f3462507a2a4de645900f99e6ec9&units=metric";
   $http.get(url).then(function(res){
