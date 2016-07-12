@@ -6,7 +6,7 @@ function mapCtrl($scope,$rootScope, $state ,$stateParams, $http, $cordovaGeoloca
 
 $scope.play = function(src){
   console.log(src);
-  var src2 = 'http://192.169.0.19:8000/audio/'+src+'.mp3';
+  var src2 = 'http://192.168.1.14:8000/audio/'+src+'.mp3';
   var media = $cordovaMedia.newMedia(src2);
   media.play();
 };
@@ -14,7 +14,7 @@ $scope.pause = function(){
   media.stop();
 };
 
-  //  $cordovaMedia.newMedia('http://192.169.0.19:8000/audio/audio1.mp3').play();
+  //  $cordovaMedia.newMedia('http://192.168.1.14:8000/audio/audio1.mp3').play();
 
 
 

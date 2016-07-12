@@ -12,18 +12,6 @@
               <input type="text" placeholder="Catégories" ng-model="parcour.category">
         </label>
 
-    <div class="form-group">
-        <label class="col-md-4 control-label" for="pictures">Add Pictures</label>
-          <div class="col-md-4">
-                <input id="pictures" type="file" ngf-select ng-model="files"  name="file"    
-                accept="image/*" ngf-max-size="2MB" ngf-multiple="true" ngf-keep="true" ngf-keep-distinct="true" class="btn btn-primary"/>
-                <!-- Show image thumb and remove option -->
-                <span ng-repeat="file in files">
-                <img ngf-thumbnail="!file.$error && file" class="thumb"> <button class="btn btn-danger" ng-click="file = null" ng-show="file">Remove</button>
-                </span>
-         </div>
-     </div>
-
         <label class="item item-input item-floating-label">
               <span class="input-label">Distance</span>
               <input type="text" placeholder="Distance" ng-model="parcour.distance">
@@ -32,8 +20,8 @@
               <span class="input-label">Durée</span>
               <input type="text" placeholder="Durée" ng-model="parcour.duration">
         </label>
-              
-               <button class="button center button-assertive" ng-click="create()">
+
+               <button class="button center button-positive" ng-click="create()">
             Créer un parcour</button>
     </div>
 
