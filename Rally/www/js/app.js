@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','ngCordova', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic','ngCordova', 'starter.controllers','starter.directives', 'starter.services','starter.factories'])
 .config(function($ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
 })
@@ -24,90 +24,11 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers', 'starter.
     }
   });
 })
+.factory('global', function() {
+    return {
+      host: '192.168.3.196',
 
-.config(function($stateProvider, $urlRouterProvider) {
-
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
-  $stateProvider
-
-  // setup an abstract state for the tabs directive
-    .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
+      port: 8000
+    };
   })
-
-  // Each tab has its own nav history stack:
-
-  .state('tab.dash', {
-    url: '/dash',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'dashCtrl'
-      }
-    }
-  })
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'dashCtrl'
-      }
-    }
-  })
-  .state('tab.sous-theme', {
-    url: '/sous-theme/:filter',
-    views: {
-      'tab-sous-theme': {
-        templateUrl: 'templates/tab-sous-theme.html',
-        controller: 'sousthemeCtrl'
-      }
-    }
-  })
-  .state('tab.list', {
-    url: '/list/:filter',
-    views: {
-      'tab-list': {
-        templateUrl: 'templates/tab-list.html',
-        controller: 'listParcourCtrl'
-      }
-    }
-  })
-  .state('tab.description',{
-    url:'/description/:parcourId',
-    views: {
-      'tab-description':{
-        templateUrl: 'templates/tab-description.html',
-        controller: 'parcourCtrl'
-      }
-    }
-  })
-  .state('tab.map',{
-    url:'/map',
-    views: {
-      'tab-map':{
-        templateUrl: 'templates/tab-map.html',
-        controller: 'mapCtrl'
-      }
-    }
-  })
-  .state('tab.creationParcour',{
-    url:'/creationParcour',
-    views: {
-      'tab-creationParcour':{
-        templateUrl: 'templates/tab-creationParcour.html',
-        controller: 'parcourCtrl'
-      }
-    }
-  });
-
-
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
-
-});
+.config(config);

@@ -6,4 +6,5 @@ angular.module('starter.controllers', [])
 .controller ('mapCtrl', mapCtrl)
 .controller ('listParcourCtrl', listParcourCtrl)
 .controller ('dashCtrl', dashCtrl)
-.controller ('sousthemeCtrl', sousthemeCtrl);
+.controller ('sousthemeCtrl', sousthemeCtrl)
+.controller ('userCtrl', userCtrl);
