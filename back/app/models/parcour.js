@@ -1,40 +1,59 @@
 var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose');
 
-var parcourSchema = new mongoose.Schema({
-  name: { type: String, required: true, unique: true },
+var parcoursSchema = new mongoose.Schema({
+  author: Object,
   duration: String,
   category: Array,
-  theme: Array,
   distance: String,
-  POI: Array,
-  isAdmin : { type: Boolean, default: false}
-});
+  location: String,
+  POIS:[{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'POI'
+	}],
+  comments:[{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'comment'
+  }],
+  });
 
-var Parcour = {
-    model: mongoose.model('Parcour', parcourSchema),
+var Parcours = {
+    model: mongoose.model('Parcours', parcoursSchema),
 
 
-    findAll: function(req, res) {
-		Parcour.model.find({}, {password: 0}, function (err, parcours) {
-			res.json(parcours);
-		});
-	},
-
-	findById: function(req, res) {
-		Parcour.model.findById(req.params.id, {password: 0}, function (err, parcour) {
-			 res.json(parcour);
-		});
-	},
+    ffindAll: function(req, res) {
+    		User.model.find({}, {password: 0})
+    		.populate('POIS')
+    		.populate('comments')
+    		.exec(function (err, parcours) {
+    			console.log(parcours);
+    			res.send(parcours);
+    		});
+    	},
+      findById: function(req, res) {
+          User.model.findOne(req.params.id, {
+                  password: 0
+              })
+              .populate('POIS')
+          		.populate('comments')
+              .exec(function(err, parcours) {
+                  if (parcours) {
+                      console.log(parcours);
+                      res.send(parcours);
+                  } else {
+                      res.send(err);
+                  }
+              });
+      },
 
 	create: function(req, res) {
-		Parcour.model.create(req.body,
-        function(err, parcour) {
+		Parcours.model.create(req.body,
+        function(err, parcours) {
             if (!err)
-                res.json(parcour);
+                res.json(parcours);
             else{
                 if (err.code === 11000 || err.code === 11001)
-                    err.message = "Parcourname " + req.body.name  + " already exist";
+                    err.message = "Parcourssname " + req.body.name  + " already exist";
 
                 res.status(500).send(err.message);
             }
@@ -42,22 +61,29 @@ var Parcour = {
 	},
 
 	update: function(req, res) {
-		Parcour.model.update({_id: req.params.id}, req.body, function(err, parcour) {
-            console.log(parcour);
+		Parcours.model.update({_id: req.params.id}, req.body, function(err, parcours) {
+            console.log(parcours);
             if (err)
                 res.status(500).send(err.message);
-            res.json(parcour);
+            res.json(parcours);
 	    });
 	},
 
 	delete: function(req, res){
-		Parcour.model.findByIdAndRemove(req.params.id, function(err){
+		Parcours.model.findByIdAndRemove(req.params.id, function(err){
             if (err)
                 res.status(500).send(err.message);
 			res.sendStatus(200);
 		})
 	}
-}
+},
+addPOIS: function(req, res) {
+    User.model.findById(req.params.id, function(err, user) {
+        user.POIS.push(req.body.id_);
+        user.save();
+        User.findById(req, res);
+    });
+},
 
 
-module.exports = Parcour;
+module.exports = Parcours;

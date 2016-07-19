@@ -3,9 +3,24 @@ var mongoose = require('mongoose');
 
 var userSchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true },
-  password: String,
-  isAdmin : { type: Boolean, default: false}
+  email: String,
+  picture: String,
+  isAdmin : { type: Boolean, default: false},
+  favorites:[{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'parcour'
+  }],
+  searches:[{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'search'
+  }],
+  parcours:[{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'parcour'
+  }],
+  bio: String,
 });
+
 
 var User = {
     model: mongoose.model('User', userSchema),
@@ -27,18 +42,34 @@ var User = {
             }
         });
 	},
-
-    findAll: function(req, res) {
-		User.model.find({}, {password: 0}, function (err, users) {
-			res.json(users);
-		});
+  findAll: function(req, res) {
+  		User.model.find({}, {password: 0})
+  		.populate('favorites')
+  		.populate('searches')
+      .populate('parcours')
+  		.exec(function (err, users) {
+  			console.log(users);
+  			res.send(users);
+  		});
+  	},
+    findById: function(req, res) {
+    		User.model.findOne(req.params.id, {password: 0})
+    		.populate('favorites')
+    		.populate('searches')
+        .populate('parcours')
+        .exec(function(err, user){
+			if (user){
+			console.log(user);
+				res.send(user);
+			}
+			else{
+				res.send(err);
+			}
+		}
+		);
 	},
 
-	findById: function(req, res) {
-		User.model.findById(req.params.id, {password: 0}, function (err, user) {
-			 res.json(user);
-		});
-	},
+
 
 	create: function(req, res) {
 		User.model.create(req.body,
@@ -69,7 +100,29 @@ var User = {
                 res.status(500).send(err.message);
 			res.sendStatus(200);
 		})
-	}
+	},
+  addFavorites: function(req, res){
+		User.model.findById(req.params.id, function(err, user){
+				user.CCC.push(req.body.id_favorite);
+				user.save();
+				User.findById(req,res);
+			});
+	},
+  addSearches: function(req, res){
+		User.model.findById(req.params.id, function(err, user){
+				user.CCC.push(req.body.id_search);
+				user.save();
+				User.findById(req,res);
+			});
+	},
+  addParcours: function(req, res){
+    User.model.findById(req.params.id, function(err, user){
+        user.CCC.push(req.body.id_parcours);
+        user.save();
+        User.findById(req,res);
+      });
+  },
+
 }
 
 

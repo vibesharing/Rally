@@ -20,4 +20,12 @@ module.exports 	= function(app) {
 
 	app.post('/api/mail', Mail.sendMail);
 
+	app.put('/api/users/parcours/:id', Auth.user.hasAuthorization, User.addParcours);
+
+	app.put('/api/users/searches/:id', Auth.user.hasAuthorization, User.addSearches);
+
+	app.put('/api/users/favorites/:id', Auth.user.hasAuthorization, User.addFavorites);
+
+
+
 };

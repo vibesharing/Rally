@@ -9,7 +9,7 @@ function userService($http) {
     update: function(id, data) {
       return $http.put('http://192.168.1.14:8000/api/users/' + id, data);
     },
-    createParcour: function(data) {
+    createUser: function(data) {
       return $http.post('http://192.168.1.14:8000/api/users', data);
     },
     delete: function(id) {

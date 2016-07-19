@@ -1,4 +1,4 @@
-function userCtrl($scope, $state, $rootScope, $ionicHistory, $q, $ionicLoading, $http, global, $cordovaGeolocation){
+function userCtrl($scope, $state,userService, $rootScope, $ionicHistory, $q, $ionicLoading, $http, global, $cordovaGeolocation){
 
 
   var fbLoginSuccess = function(response) {
@@ -12,7 +12,7 @@ function userCtrl($scope, $state, $rootScope, $ionicHistory, $q, $ionicLoading, 
      getFacebookProfileInfo(authResponse)
      .then(function(profileInfo) {
        // For the purpose of this example I will store user data on local storage
-       UserService.setUser({
+       userService.createUser({
          authResponse: authResponse,
  				userID: profileInfo.id,
  				name: profileInfo.name,
@@ -20,7 +20,7 @@ function userCtrl($scope, $state, $rootScope, $ionicHistory, $q, $ionicLoading, 
          picture : "http://graph.facebook.com/" + authResponse.userID + "/picture?type=large"
        });
        $ionicLoading.hide();
-       $state.go('app.home');
+       $state.go('tab.dash');
      }, function(fail){
        // Fail get profile info
        console.log('profile info fail', fail);
@@ -66,7 +66,7 @@ function userCtrl($scope, $state, $rootScope, $ionicHistory, $q, $ionicLoading, 
  					getFacebookProfileInfo(success.authResponse)
  					.then(function(profileInfo) {
  						// For the purpose of this example I will store user data on local storage
- 						UserService.setUser({
+ 						UserService.createUser({
  							authResponse: success.authResponse,
  							userID: profileInfo.id,
  							name: profileInfo.name,
@@ -74,13 +74,13 @@ function userCtrl($scope, $state, $rootScope, $ionicHistory, $q, $ionicLoading, 
  							picture : "http://graph.facebook.com/" + success.authResponse.userID + "/picture?type=large"
  						});
 
- 						$state.go('app.home');
+ 						$state.go('tab.dash');
  					}, function(fail){
  						// Fail get profile info
  						console.log('profile info fail', fail);
  					});
  				}else{
- 					$state.go('app.home');
+ 					$state.go('tab.dash');
  				}
        } else {
          // If (success.status === 'not_authorized') the user is logged in to Facebook,
