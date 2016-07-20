@@ -4,28 +4,41 @@ var mongoose = require('mongoose');
 var searchSchema = new mongoose.Schema({
   author:{
 			type: mongoose.Schema.Types.ObjectId,
-			ref: 'POI'
+			ref: 'user'
 	},
   category: Array,
-  city: String,
+  rangeTime: String,
+	rangeKms: String,
+	location: Object,
   });
 
 var Search = {
     model: mongoose.model('Search', searchSchema),
 
 
-    findAll: function(req, res) {
-		Search.model.find({}, {password: 0}, function (err, searchs) {
-			res.json(searchs);
-		});
-	},
+		findAll: function(req, res) {
+				Search.model.find({}, {password: 0})
+				.populate('user')
+				.exec(function (err, searches) {
+					console.log(searches);
+					res.send(searches);
+				});
+			},
 
-	findById: function(req, res) {
-		Search.model.findById(req.params.id, {password: 0}, function (err, search) {
-			 res.json(search);
-		});
-	},
-
+			findById: function(req, res) {
+					Search.model.findOne(req.params.id, {
+									password: 0
+							})
+							.populate('user')
+							.exec(function(err, search) {
+									if (search) {
+											console.log(search);
+											res.send(search);
+									} else {
+											res.send(err);
+									}
+							});
+			},
 	create: function(req, res) {
 		Search.model.create(req.body,
         function(err, search) {

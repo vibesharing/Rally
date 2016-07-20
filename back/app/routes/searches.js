@@ -6,14 +6,14 @@ var Search = require('../models/search.js');
 
 module.exports 	= function(app) {
 
-	app.get('/api/parcours', Search.findAll);
+	app.get('/api/searches', Search.findAll);
 
-	app.get('/api/parcours/:id', Search.findById);
+	app.get('/api/searches/:id', Search.findById);
 
-	app.post('/api/parcours', Search.create);
+	app.post('/api/searches', Search.create);
 
-	app.put('/api/parcours/:id', Search.update);
+	app.put('/api/searches/:id', Search.update);
 
-	app.delete('/api/parcours/:id', Search.delete);
+	app.delete('/api/searches/:id', Search.delete);
 
 };

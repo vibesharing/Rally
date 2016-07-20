@@ -15,17 +15,29 @@ var Comment = {
     model: mongoose.model('Comment', commentSchema),
 
 
-    findAll: function(req, res) {
-		Comment.model.find({}, {password: 0}, function (err, comments) {
-			res.json(comments);
-		});
-	},
+		findAll: function(req, res) {
+    		Comment.model.find({}, {password: 0})
+    		.populate('author')
+    		.exec(function (err, comments) {
+    			console.log(comments);
+    			res.send(comments);
+    		});
+    	},
 
-	findById: function(req, res) {
-		Comment.model.findById(req.params.id, {password: 0}, function (err, comment) {
-			 res.json(comment);
-		});
-	},
+			findById: function(req, res) {
+					Comment.model.findOne(req.params.id, {
+									password: 0
+							})
+							.populate('author')
+							.exec(function(err, comment) {
+									if (comment) {
+											console.log(comment);
+											res.send(comment);
+									} else {
+											res.send(err);
+									}
+							});
+			},
 
 	create: function(req, res) {
 		Comment.model.create(req.body,
@@ -55,9 +67,9 @@ var Comment = {
             if (err)
                 res.status(500).send(err.message);
 			res.sendStatus(200);
-		})
+		});
 	}
-}
+};
 
 
 module.exports = Comment;

@@ -2,10 +2,14 @@ var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose');
 
 var parcoursSchema = new mongoose.Schema({
-  author: Object,
-  duration: String,
+  name: String,
+  author:{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'user'
+	} ,
+  duration: Number,
   category: Array,
-  distance: String,
+  distance: Number,
   location: String,
   POIS:[{
 			type: mongoose.Schema.Types.ObjectId,
@@ -21,9 +25,10 @@ var Parcours = {
     model: mongoose.model('Parcours', parcoursSchema),
 
 
-    ffindAll: function(req, res) {
-    		User.model.find({}, {password: 0})
+    findAll: function(req, res) {
+    		Parcours.model.find({}, {password: 0})
     		.populate('POIS')
+        .populate('user')
     		.populate('comments')
     		.exec(function (err, parcours) {
     			console.log(parcours);
@@ -31,10 +36,11 @@ var Parcours = {
     		});
     	},
       findById: function(req, res) {
-          User.model.findOne(req.params.id, {
+          Parcours.model.findOne(req.params.id, {
                   password: 0
               })
               .populate('POIS')
+              .populate('user')
           		.populate('comments')
               .exec(function(err, parcours) {
                   if (parcours) {
@@ -47,6 +53,7 @@ var Parcours = {
       },
 
 	create: function(req, res) {
+    console.log(req.body);
 		Parcours.model.create(req.body,
         function(err, parcours) {
             if (!err)
@@ -74,16 +81,24 @@ var Parcours = {
             if (err)
                 res.status(500).send(err.message);
 			res.sendStatus(200);
-		})
-	}
-},
-addPOIS: function(req, res) {
-    User.model.findById(req.params.id, function(err, user) {
-        user.POIS.push(req.body.id_);
-        user.save();
-        User.findById(req, res);
-    });
-},
+		});
+	},
+  addPOIS: function(req, res) {
+      Parcours.model.findById(req.params.id, function(err, user) {
+          user.POIS.push(req.body.id_);
+          user.save();
+          Parcours.findById(req, res);
+      });
+  },
+
+  addcomments: function(req, res) {
+      Parcours.model.findById(req.params.id, function(err, user) {
+          user.comments.push(req.body.id_);
+          user.save();
+          Parcours.findById(req, res);
+      });
+  },
+}
 
 
 module.exports = Parcours;

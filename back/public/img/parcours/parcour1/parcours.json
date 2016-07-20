@@ -1,0 +1,67 @@
+{
+    "_id" : ObjectId("5780fff4d02683b3c63f30ee"),
+    "author" : {
+        "name" : "Jean",
+        "photo" : "Jean.jpg"
+    },
+    "description" : " The medieval castle and later château was the residence of French monarchs from Louis VII through Napoleon III. Napoleon I abdicated his ",
+    "postingDate" : "12 Mai 2016",
+    "name" : "FontaineBleau",
+    "photo" : "FontaineBleau.jpg",
+    "duration" : "120",
+    "category" : [
+        "Architecture",
+        "En Famille"
+    ],
+    "theme" : [ 
+        "Photos",
+        "Jeux"
+    ],
+    "distance" : "4",
+    "POIS" : [
+        {
+            "description" : "Le majestueux Aigle Noir Hôtel occupe une ancienne demeure du XVIIIe siècle. Ses chambres spacieuses sont décorées dans le style Empire avec des étoffes de luxe et des meubles anciens en bois. L'aigle est le symbole de l'empereur Napoléon III : saurez-vous retrouver les nombreux aigles de la ville ?",
+            "timetable" : "",
+            "audioName" : "hotel",
+            "name" : "Hôtel de L'Aigle Noir",
+            "location" : {
+                "Lat" : 2.6992355,
+                "Lng" : 48.4038411
+            },
+            "img" : "hotel.png"
+        },
+        {
+            "description" : "De style Renaissance et classique, il a été l'une des demeures des souverains français depuis François Ier (qui en fit sa demeure favorite) jusqu'à Napoléon III. Plusieurs rois ont laissé leur empreinte dans la construction et l'histoire du château. Explorez ce témoin des différentes phases de l'Histoire de France, depuis le Moyen Âge !",
+            "timetable" : "",
+            "audioName" : "chateau",
+            "name" : "Château de FontaineBleau",
+            "location" : {
+                "Lat" : 2.6980714,
+                "Lng" : 48.4020693
+            },
+            "img" : "chateau.png"
+        },
+        {
+            "description" : "Il fut élevé par Catherine de Médicis sur un espace déjà aménagé par François Ier et portait à l’époque le nom de jardin de la Reine. Tracé à la française, il fut réaménagé par Henri IV et cloisonné au nord par une orangerie. Puis à nouveau remanié sous Louis XIV. Au XIXe siècle, le jardin fut transformé en jardin anglais et l’orangerie détruite.",
+            "timetable" : "",
+            "audioName" : "jardins",
+            "name" : "Jardins",
+            "location" : {
+                "Lat" : 2.7049486,
+                "Lng" : 48.4018253
+            },
+            "img" : "jardin.png"
+        },
+        {
+            "description" : "Sa grande salle à l’italienne en forme d’ellipse, inspirée du château de Versailles est aussi l’un des plus beaux d'Ile de France. C’est un vrai bijou ! un exemple de ce que les arts décoratifs du Second Empire produisaient de mieux. Ce théâtre de cour a été aménagé à la demande de Napoléon III de 1853 à 1856 par l’architecte Hector Lefuel.",
+            "timetable" : "",
+            "audioName" : "theatre",
+            "name" : "Théatre",
+            "location" : {
+                "Lat" : 2.69783,
+                "Lng" : 48.40333
+            },
+            "img" : "theatre.png"
+        }
+    ]
+}
