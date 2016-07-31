@@ -1,5 +1,16 @@
 function userCtrl($scope, $state,userService, $rootScope, $ionicHistory, $q, $ionicLoading, $http, global, $cordovaGeolocation){
 
+$scope.apidae = function(){
+  var query={"apiKey":"lPTLmIuP","projetId":1980,"searchQuery":"chateau","searchFields":"NOM_DESCRIPTION","selectionIds":[43287],"count":20,"first":0,"order":"PERTINENCE","asc":false};
+query = angular.toJson(query);
+
+// query= encodeURI(query);
+console.log(encodeURI("http://api.apidae-tourisme.com/api/v002/recherche/list-objets-touristiques?query="+query));
+  $http.get((encodeURI("http://api.apidae-tourisme.com/api/v002/recherche/list-objets-touristiques?query="+query))).then(function(res){
+    console.log(res.data);
+    alert(res.data);
+  });
+};
 
   var fbLoginSuccess = function(response) {
      if (!response.authResponse){
@@ -12,15 +23,18 @@ function userCtrl($scope, $state,userService, $rootScope, $ionicHistory, $q, $io
      getFacebookProfileInfo(authResponse)
      .then(function(profileInfo) {
        // For the purpose of this example I will store user data on local storage
-       userService.createUser({
-         authResponse: authResponse,
+       var data ={
  				userID: profileInfo.id,
  				name: profileInfo.name,
  				email: profileInfo.email,
-         picture : "http://graph.facebook.com/" + authResponse.userID + "/picture?type=large"
+        picture : "http://graph.facebook.com/" + authResponse.userID + "/picture?type=large"
+       };
+       userService.createUser(data).then(function(res){
+         $rootScope.user = res.data;
+         $ionicLoading.hide();
+         $state.go('tab.dash');
        });
-       $ionicLoading.hide();
-       $state.go('tab.dash');
+
      }, function(fail){
        // Fail get profile info
        console.log('profile info fail', fail);
@@ -54,13 +68,17 @@ function userCtrl($scope, $state,userService, $rootScope, $ionicHistory, $q, $io
    $scope.facebookSignIn = function() {
      facebookConnectPlugin.getLoginStatus(function(success){
        if(success.status === 'connected'){
+         alert(success.authResponse.userID);
          // The user is logged in and has authenticated your app, and response.authResponse supplies
          // the user's ID, a valid access token, a signed request, and the time the access token
          // and signed request each expire
-         console.log('getLoginStatus', success.status);
+         userService.findOne(success.authResponse.userID).then(function(res) {
+          $rootScope.user = res.data;
+          $rootScope.hideTabs = '';
+          $state.go('tab.dash');
+      });
 
      		// Check if we have our user saved
-     		var user = UserService.getUser('facebook');
 
      		if(!user.userID){
  					getFacebookProfileInfo(success.authResponse)

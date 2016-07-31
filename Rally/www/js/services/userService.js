@@ -1,19 +1,22 @@
-function userService($http) {
+function userService($http,global) {
   return {
     get: function(id) {
-      return $http.get('http://192.168.1.14:8000/api/users/');
+      return $http.get('http://'+global.host+':'+global.port+'/api/users/');
     },
     getById: function(id) {
-      return $http.get('http://192.168.1.14:8000/api/users/' + id);
+      return $http.get('http://'+global.host+':'+global.port+'/api/users/' + id);
     },
     update: function(id, data) {
-      return $http.put('http://192.168.1.14:8000/api/users/' + id, data);
+      return $http.put('http://'+global.host+':'+global.port+'/api/users/' + id, data);
     },
     createUser: function(data) {
-      return $http.post('http://192.168.1.14:8000/api/users', data);
+      return $http.post('http://'+global.host+':'+global.port+'/api/users', data);
     },
     delete: function(id) {
-      return $http.delete('http://192.168.1.14:8000/api/users/' + id);
-    }
+      return $http.delete('http://'+global.host+':'+global.port+'/api/users/' + id);
+    },
+    findOne: function(id) {
+      return $http.get('http://'+global.host+':'+global.port+'/api/users/'+ id);
+    },
   };
 }

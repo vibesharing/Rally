@@ -1,0 +1,58 @@
+<ion-view hide-nav-bar='true'>
+  <ion-content class="padding">
+    <div ng-show="step === 0">
+
+      <h1>Information about the POI</h1>
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Nom du POI</span>
+          <input type="text" placeholder="Nom du POI" ng-model="POI.name">
+        </label>
+
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Descritpion</span>
+          <input type="text" placeholder="description" ng-model="POI.description">
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Category
+          </div>
+          <select ng-model="POI.category">
+            <option>Architecture</option>
+            <option>nature</option>
+            <option>Gourmand</option>
+          </select>
+        </label>
+        <button ng-click="step = 1">next</button>
+
+      </div>
+    </div>
+    <div ng-show="step === 1">
+      <h1>Geolocalisation POI</h1>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Descritpion</span>
+        <input type="text" ng-autocomplete ng-model="POI.geolocation" details="{latlng:''}" options="{ types: 'establishment'}">
+      </label>
+      <button ng-click="search()">search</button>
+      <button ng-click="searchWithPosition()"></button>
+      <div id="map" data-tap-disabled="true"></div>
+      <button ng-click="step = 2">next</button>
+    </div>
+
+
+    <div ng-show="step === 2">
+      <h1>Add Pictures</h1>
+      <button  ng-click="takePicture()">take</button>
+      <button  ng-click="addImage()">add</button>
+      <button ng-click="step = 3">next</button>
+
+    </div>
+
+    <div ng-show="step === 3">
+      <h1>Add sound Description</h1>
+      <button  ng-click="captureAudio()">Audio</button>
+
+    </div>
+
+  </ion-content>
+</ion-view>

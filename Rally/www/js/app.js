@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','ngCordova', 'starter.controllers','starter.directives', 'starter.services','starter.factories'])
+angular.module('starter', ['ionic','ngCordova', 'starter.controllers','starter.directives','ngAutocomplete', 'starter.services','starter.factories'])
 .config(function($ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
 })
@@ -26,7 +26,7 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers','starter.d
 })
 .factory('global', function() {
     return {
-      host: '192.168.3.196',
+      host: 'localhost',
 
       port: 8000
     };

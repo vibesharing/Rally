@@ -1,29 +1,29 @@
 <ion-view hide-nav-bar='true'>
-<ion-view hide-nav-bar='true'>
+  <ion-view hide-nav-bar='true'>
     <ion-content>
 
-    <div class="list">
+      <div class="list">
         <label class="item item-input item-floating-label">
-              <span class="input-label">Nom du parcour</span>
-              <input type="text" placeholder="Nom du parcour" ng-model="parcour.name">
-       </label>
+          <span class="input-label">Nom du parcour</span>
+          <input type="text" placeholder="Nom du parcour" ng-model="parcour.name">
+        </label>
         <label class="item item-input item-floating-label">
-              <span class="input-label">Catégories</span>
-              <input type="text" placeholder="Catégories" ng-model="parcour.category">
+          <span class="input-label">Catégories</span>
+          <input type="text" placeholder="Catégories" ng-model="parcour.category">
         </label>
 
         <label class="item item-input item-floating-label">
-              <span class="input-label">Distance</span>
-              <input type="text" placeholder="Distance" ng-model="parcour.distance">
-       </label>
-       <label class="item item-input item-floating-label">
-              <span class="input-label">Durée</span>
-              <input type="text" placeholder="Durée" ng-model="parcour.duration">
+          <span class="input-label">Distance</span>
+          <input type="text" placeholder="Distance" ng-model="parcour.distance">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Durée</span>
+          <input type="text" placeholder="Durée" ng-model="parcour.duration">
         </label>
 
-               <button class="button center button-positive" ng-click="create()">
-            Créer un parcour</button>
-    </div>
+        <button ng-click="goToaddPOI()">Add a POI</button>
+        <button class="button center button-positive" ng-click="create()">Créer un parcour</button>
+      </div>
 
     </ion-content>
-</ion-view>
+  </ion-view>

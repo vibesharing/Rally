@@ -87,6 +87,15 @@ function config($stateProvider, $urlRouterProvider,$httpProvider) {
         controller: 'parcourCtrl'
       }
     }
+  })
+  .state('tab.creationpoi',{
+    url:'/creationpoi',
+    views: {
+      'tab-creationpoi':{
+        templateUrl: 'templates/tab-creationpoi.html',
+        controller: 'POICtrl'
+      }
+    }
   });
 
 

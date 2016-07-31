@@ -22,12 +22,15 @@ $scope.create = function(){
 
 };
 $scope.gotopagesoustheme= function(filter){
-  $state.go('descrption', {id: filter});
+  $state.go('tab.description', {id: filter});
 
 };
 $scope.goToDescription = function(){
   $rootScope.parcour = $scope.parcour;
-  $state.go('descrption');
+  $state.go('tab.description');
+};
+$scope.goToaddPOI = function(){
+  $state.go('tab.creationpoi');
 };
 
 }
