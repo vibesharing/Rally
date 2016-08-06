@@ -5,14 +5,14 @@
     <div class="list card" ng-repeat='parcour in parcours'>
 
       <div class="item item-avatar">
-        <img ng-src="http://192.168.1.14:8000/img/{{parcour.author.photo}}">
+        <img ng-src="http://localhost:8000/img/{{parcour.author.photo}}">
         <h2>Auteur: {{parcour.author.name}}</h2>
         <p>Posté le: {{parcour.postingDate}}</p>
       </div>
 
       <div class="item item-body">
 
-        <img class="full-image" ng-src="http://192.168.1.14:8000/img/{{parcour.photo}}">
+        <img class="full-image" ng-src="http://localhost:8000/img/{{parcour.photo}}">
         <h3>{{parcour.name}}</h3>
         <p>
           {{parcour.description}}
